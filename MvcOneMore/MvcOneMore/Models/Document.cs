@@ -10,6 +10,12 @@ namespace MvcOneMore.Models
 {
     public class Document
     {
+        public Document()
+        {
+            _ukupno = 0;
+            Tasks = new List<Task>();
+        }
+
         public int ID { get; set; }
         [Required]
         [MaxLength(10)]
@@ -24,11 +30,12 @@ namespace MvcOneMore.Models
             }
         }
 
+        int? _ukupno;
         public int? Ukupno
         {
             get
             {
-                return this.Ukupno;
+                return this._ukupno;
             }
         
             set
@@ -39,13 +46,14 @@ namespace MvcOneMore.Models
                     zbir += v.Kolicina;
 
                }
-                this.Ukupno = zbir;
+                this._ukupno = zbir;
             }
 
         }
         public ICollection<Task> Tasks { get; set; }
 
 
+        // DocumentDBContext bi trebao biti zasebna klasa, a ne sub klasa u okviru Document klase. Ali radi i ovako pa ti to nisam menjao.
         public class DocumentDBContext : DbContext
         {
             public DbSet<Document> Document { get; set; }
