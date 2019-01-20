@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MvcOneMore.Models.Task>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Document.BrojDokumenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kolicina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RedniBroj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ukupno)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Document.BrojDokumenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kolicina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RedniBroj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ukupno)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { ID=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { ID=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { ID=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
